@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -7,10 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MyTrashCollector.ActionFilters;
 using MyTrashCollector.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MyTrashCollector
@@ -34,6 +37,11 @@ namespace MyTrashCollector
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI()
                 .AddDefaultTokenProviders();
+            services.AddScoped<ClaimsPrincipal>(services => services.GetService<IHttpContextAccessor>().HttpContext.User);
+            services.AddControllers(configure =>
+            {
+                configure.Filters.Add(typeof(GlobalRouting));
+            });
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
