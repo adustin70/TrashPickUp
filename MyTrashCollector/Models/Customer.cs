@@ -20,7 +20,7 @@ namespace MyTrashCollector.Models
         public bool ExtraPickUp { get; set; }
         public double Balance { get; set; }
         public DateTime StartDay { get; set; }
-        public DateTime EndaDay { get; set; }
+        public DateTime EndDay { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MyTrashCollector.Models;
 
 namespace MyTrashCollector.Data
 {
@@ -24,5 +25,7 @@ namespace MyTrashCollector.Data
                 NormalizedName = "ADMIN"
             });
         }
+
+        public DbSet<Customer> Customer { get; set; }
     }
 }
