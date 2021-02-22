@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyTrashCollector.Data;
 
-namespace MyTrashCollector.Data.Migrations
+namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210222164138_Customer")]
-    partial class Customer
+    [Migration("20210222195851_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,10 +50,17 @@ namespace MyTrashCollector.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b793aacc-4e57-4994-80ae-6658a25cae68",
-                            ConcurrencyStamp = "27c48393-17fa-4c58-9854-85e670bdbed7",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "c1d2eec8-73ba-4205-a0f1-c085f9b6c951",
+                            ConcurrencyStamp = "be391b4d-220d-4da1-969e-bda29ac66f3e",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = "b5b12415-412e-458f-aae4-0016bd4768cc",
+                            ConcurrencyStamp = "2d8e3d53-5c53-44ab-9093-0d41cd074d71",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
                         });
                 });
 
