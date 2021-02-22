@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTrashCollector", "MyTrashCollector\MyTrashCollector.csproj", "{C36F9D9B-2DE6-4ADA-AC1D-411C5F3E98FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C36F9D9B-2DE6-4ADA-AC1D-411C5F3E98FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C36F9D9B-2DE6-4ADA-AC1D-411C5F3E98FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C36F9D9B-2DE6-4ADA-AC1D-411C5F3E98FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C36F9D9B-2DE6-4ADA-AC1D-411C5F3E98FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39F4CF68-8B4B-4AAD-88CA-2D4D8C5B6F3D}
+	EndGlobalSection
+EndGlobal
