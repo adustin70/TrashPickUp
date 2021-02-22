@@ -74,8 +74,8 @@ namespace MyTrashCollector.Areas.Identity.Pages.Account
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            var role = _roleManager.Roles;
-            Roles = new SelectList(Roles, "Name", "Name");
+            var roles = _roleManager.Roles;
+            Roles = new SelectList(roles, "Name", "Name");
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
