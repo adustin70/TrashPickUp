@@ -24,30 +24,27 @@ namespace MyTrashCollector.Controllers
 
         public IActionResult Index()
         {
-            
-            return View();
-        }
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.Customer.Where(c => c.IdentityUserId == userId).SingleOrDefault();
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customer
-                .Include(c => c.IdentityUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (customer == null)
             {
-                return NotFound();
+                return RedirectToAction("Create");
             }
+            else
+            {
+                return View(customer);
+            }
+        }
 
-            return View(customer);
+        public IActionResult Details(int? id)
+        {
+            var user = _context.Customer.Where(c => c.Id == id);
+            return View(user);
         }
 
         public IActionResult Create()
-        {            
+        {
             return View();
         }
 
@@ -55,97 +52,41 @@ namespace MyTrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                customer.IdentityUserId = userId;
-                _context.Add(customer);
-                _context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(customer);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            customer.IdentityUserId = userId;
+            _context.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customer.FindAsync(id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customer.IdentityUserId);
-            return View(customer);
+            var user = _context.Customer.Where(c => c.Id == id).FirstOrDefault();
+            return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Customer customer)
+        public IActionResult Edit(int id, Customer customer)
         {
-            if (id != customer.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CustomerExists(customer.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customer.IdentityUserId);
-            return View(customer);
-        }
-
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var customer = await _context.Customer
-                .Include(c => c.IdentityUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (customer == null)
-            {
-                return NotFound();
-            }
-
-            return View(customer);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var customer = await _context.Customer.FindAsync(id);
-            _context.Customer.Remove(customer);
-            await _context.SaveChangesAsync();
+            _context.Update(customer);
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CustomerExists(int id)
+        public IActionResult Delete(int? id)
         {
-            return _context.Customer.Any(e => e.Id == id);
+            var user = _context.Customer.Where(c => c.Id == id).FirstOrDefault();
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id, Customer customer)
+        {
+            _context.Remove(customer);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
