@@ -10,8 +10,8 @@ using MyTrashCollector.Data;
 namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210223181431_init")]
-    partial class init
+    [Migration("20210223200611_datetime")]
+    partial class datetime
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace MyTrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "d7306ffa-2bef-4509-8d10-792819d512af",
-                            ConcurrencyStamp = "6a7fd984-2d21-43c1-bfca-7bc750c5eec1",
+                            Id = "78a5a131-05bb-49e3-b4aa-af49b5d503d7",
+                            ConcurrencyStamp = "b3be5fd6-1e05-4ed3-b686-801e8b5f2786",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "f8c8ec11-11cd-4e4a-86b8-b32061e88c62",
-                            ConcurrencyStamp = "b9b42289-c5b4-469d-bd2f-50005c80118f",
+                            Id = "a32d65cc-4ab8-481f-a1b4-f865db4adabe",
+                            ConcurrencyStamp = "4e37a41e-9af4-409b-a3b6-07c84d972e6a",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -249,8 +249,8 @@ namespace MyTrashCollector.Migrations
                     b.Property<DateTime>("EndDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("ExtraPickUp")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("ExtraPickUp")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");

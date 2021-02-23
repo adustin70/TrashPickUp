@@ -37,12 +37,6 @@ namespace MyTrashCollector.Controllers
             }
         }
 
-        public IActionResult Details(int? id)
-        {
-            var user = _context.Customer.Where(c => c.Id == id);
-            return View(user);
-        }
-
         public IActionResult Create()
         {
             return View();
@@ -78,19 +72,21 @@ namespace MyTrashCollector.Controllers
             return RedirectToAction(nameof(Index)); 
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult RequestOneTime()
         {
-            var user = _context.Customer.Where(c => c.Id == id).FirstOrDefault();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
             return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, Customer customer)
+        public IActionResult RequestOneTime(Customer customer)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            customer.IdentityUserId = userId;
-            _context.Remove(customer);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            user.ExtraPickUp = customer.ExtraPickUp;
+            _context.Update(user);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
