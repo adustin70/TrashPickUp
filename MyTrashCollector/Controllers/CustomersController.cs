@@ -90,5 +90,26 @@ namespace MyTrashCollector.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult StartVacation()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult StartVacation(Customer customer)
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            user.StartDay = customer.StartDay;
+            user.EndDay = customer.EndDay;
+
+            _context.Update(user);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
