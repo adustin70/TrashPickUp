@@ -59,19 +59,23 @@ namespace MyTrashCollector.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit()
         {
-            var user = _context.Customer.Where(c => c.Id == id).FirstOrDefault();
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
             return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Customer customer)
+        public IActionResult Edit(Customer customer)
         {
-            _context.Update(customer);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Customer.Where(c => c.IdentityUserId == userId).FirstOrDefault();
+            user.PickUpDay = customer.PickUpDay;
+            _context.Update(user);
             _context.SaveChanges();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); 
         }
 
         public IActionResult Delete(int? id)
@@ -84,6 +88,8 @@ namespace MyTrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id, Customer customer)
         {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            customer.IdentityUserId = userId;
             _context.Remove(customer);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
