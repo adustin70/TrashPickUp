@@ -1,15 +1,12 @@
-﻿@model IEnumerable<MyTrashCollector.Models.Employee>
+﻿@model IEnumerable<MyTrashCollector.Models.Customer>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Todays Pickups</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -20,7 +17,13 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PickUpDay)
             </th>
             <th></th>
         </tr>
@@ -35,7 +38,13 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickUpDay)
             </td>
         </tr>
 }

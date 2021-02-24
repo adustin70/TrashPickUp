@@ -23,7 +23,7 @@ namespace MyTrashCollector.Controllers
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
-            var employeeZip = _context.Employee.Where(e => e.ZipCode == employee.ZipCode);
+            var trashZip = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DateTime.Today);
 
             if (employee == null)
             {
@@ -31,7 +31,7 @@ namespace MyTrashCollector.Controllers
             }
             else
             {
-                return View(employeeZip);//Not right needs to display todays pickups based off zipcode
+                return View(trashZip);
             }
         }
 
