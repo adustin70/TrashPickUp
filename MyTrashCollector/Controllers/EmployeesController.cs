@@ -21,10 +21,10 @@ namespace MyTrashCollector.Controllers
 
         public IActionResult Index()
         {
-            var date = DateTime.Today.Date;
+            var date = DateTime.Now.DayOfWeek;
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
-            var trashZip = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay.Value.Date == date);
+            var trashZip = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == date);
 
             if (employee == null)
             {
@@ -57,8 +57,8 @@ namespace MyTrashCollector.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
             var trashZip = _context.Customer.Where(c => c.ZipCode == employee.ZipCode);
-            var date = DateTime.Now;
-            var pickup = _context.Customer.Where(c => c.PickUpDay.Value.Date.ToString("ddd") == date.ToString("ddd"));
+            var date = DateTime.Now.DayOfWeek;
+            var pickup = _context.Customer.Where(c => c.PickUpDay == date);
             return View(pickup);
         }
     }

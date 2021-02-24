@@ -10,8 +10,8 @@ using MyTrashCollector.Data;
 namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210224164159_datetimenull")]
-    partial class datetimenull
+    [Migration("20210224211153_dayofweek")]
+    partial class dayofweek
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace MyTrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "25dcf5cb-8afe-4e5c-8ef0-e08c21b15c00",
-                            ConcurrencyStamp = "f61540c1-4b29-4990-8d8c-c67f63e82e1d",
+                            Id = "e76ac56e-e69c-4b06-9bfe-7b40909c64e3",
+                            ConcurrencyStamp = "e39eb3fd-8ae3-4895-8860-5eb911ce46b6",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "fe1bc8f7-cd18-4a72-a03f-cc3aaf46542d",
-                            ConcurrencyStamp = "56c83a7e-95d9-4c89-abb9-59301280ece7",
+                            Id = "976c4ce3-c5ec-49a5-8de5-f8e7e64c6d8a",
+                            ConcurrencyStamp = "9a432192-65c0-45d7-bc92-bad6bd8cad93",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -246,11 +246,11 @@ namespace MyTrashCollector.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("EndDay")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("EndDay")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("ExtraPickUp")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("ExtraPickUp")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -261,11 +261,11 @@ namespace MyTrashCollector.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("PickUpDay")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("PickUpDay")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("StartDay")
-                        .HasColumnType("datetime2");
+                    b.Property<int?>("StartDay")
+                        .HasColumnType("int");
 
                     b.Property<double>("ZipCode")
                         .HasColumnType("float");
