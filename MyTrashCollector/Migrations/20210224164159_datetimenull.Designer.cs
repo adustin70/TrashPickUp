@@ -10,8 +10,8 @@ using MyTrashCollector.Data;
 namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210224151708_Reoved date att")]
-    partial class Reoveddateatt
+    [Migration("20210224164159_datetimenull")]
+    partial class datetimenull
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace MyTrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "4569b923-f325-4b5f-b67d-f25d1d5720d4",
-                            ConcurrencyStamp = "f4c9258f-1b07-40ea-8616-4d7e5d45e32a",
+                            Id = "25dcf5cb-8afe-4e5c-8ef0-e08c21b15c00",
+                            ConcurrencyStamp = "f61540c1-4b29-4990-8d8c-c67f63e82e1d",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "a84e42d9-a385-447e-90ff-78becd422455",
-                            ConcurrencyStamp = "71a720ad-0e1b-4914-a36d-03b5db614647",
+                            Id = "fe1bc8f7-cd18-4a72-a03f-cc3aaf46542d",
+                            ConcurrencyStamp = "56c83a7e-95d9-4c89-abb9-59301280ece7",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -246,10 +246,10 @@ namespace MyTrashCollector.Migrations
                     b.Property<double>("Balance")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("EndDay")
+                    b.Property<DateTime?>("EndDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ExtraPickUp")
+                    b.Property<DateTime?>("ExtraPickUp")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
@@ -261,10 +261,10 @@ namespace MyTrashCollector.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PickUpDay")
+                    b.Property<DateTime?>("PickUpDay")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDay")
+                    b.Property<DateTime?>("StartDay")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("ZipCode")
