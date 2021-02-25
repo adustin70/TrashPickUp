@@ -46,7 +46,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PickUpDay)
             </td>
-        </tr>
-}
+        </tr>}
     </tbody>
 </table>
+<a asp-action="Monday" asp-route-id="model.Id">Filter Pickup Days</a> | 
+<a asp-action="Index" asp-route-id="model.Id">Back To Home</a>

@@ -57,9 +57,47 @@ namespace MyTrashCollector.Controllers
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
             var trashZip = _context.Customer.Where(c => c.ZipCode == employee.ZipCode);
-            var date = DateTime.Now.DayOfWeek;
-            var pickup = _context.Customer.Where(c => c.PickUpDay == date);
-            return View(pickup);
+            return View(trashZip);
+        }
+
+        public IActionResult Monday()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Monday);
+            return View(zipDay);
+        }
+
+        public IActionResult Tuesday()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Tuesday);
+            return View(zipDay);
+        }
+
+        public IActionResult Wednesday()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Wednesday);
+            return View(zipDay);
+        }
+
+        public IActionResult Thursday()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Thursday);
+            return View(zipDay);
+        }
+
+        public IActionResult Friday()
+        {
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var employee = _context.Employee.Where(e => e.IdentityUserId == userId).FirstOrDefault();
+            var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Friday);
+            return View(zipDay);
         }
     }
 }
