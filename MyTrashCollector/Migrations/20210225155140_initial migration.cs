@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyTrashCollector.Migrations
 {
-    public partial class dayofweek : Migration
+    public partial class initialmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -205,12 +205,12 @@ namespace MyTrashCollector.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "e76ac56e-e69c-4b06-9bfe-7b40909c64e3", "e39eb3fd-8ae3-4895-8860-5eb911ce46b6", "Customer", "CUSTOMER" });
+                values: new object[] { "236792e5-3975-4ead-a1a8-bec2119d4250", "debdaa6b-db7e-44f2-a3e2-aa64a886e77e", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "976c4ce3-c5ec-49a5-8de5-f8e7e64c6d8a", "9a432192-65c0-45d7-bc92-bad6bd8cad93", "Employee", "EMPLOYEE" });
+                values: new object[] { "caeaaa85-a2d9-4514-8d3e-b077afb76584", "1f24c168-dec5-4c80-821a-5312dfe0f770", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

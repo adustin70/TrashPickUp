@@ -21,6 +21,7 @@ namespace MyTrashCollector.Models
         public double Balance { get; set; }
         public DayOfWeek? StartDay { get; set; }
         public DayOfWeek? EndDay { get; set; }
+        public bool CompletedPickup { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

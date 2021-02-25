@@ -25,6 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.PickUpDay)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompletedPickup)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -45,6 +48,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PickUpDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedPickup)
+            </td>
+            <td>
+                <a asp-action="CompletedPickup" asp-route-id="@item.IdentityUserId">Confirm Pickup</a>
             </td>
         </tr>
 }

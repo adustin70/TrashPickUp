@@ -99,5 +99,23 @@ namespace MyTrashCollector.Controllers
             var zipDay = _context.Customer.Where(c => c.ZipCode == employee.ZipCode).Where(c => c.PickUpDay == DayOfWeek.Friday);
             return View(zipDay);
         }
+
+
+        public IActionResult CompletedPickup(string id)
+        {
+            var customer = _context.Customer.Where(c => c.IdentityUserId == id).FirstOrDefault();
+            if (customer.CompletedPickup == false)
+            {
+                customer.CompletedPickup = true;
+                customer.Balance += 20;
+                _context.Update(customer);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+        }
     }
 }

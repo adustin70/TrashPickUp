@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyTrashCollector.Data;
 
 namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210225155140_initial migration")]
+    partial class initialmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,15 +50,15 @@ namespace MyTrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "9d35b7b9-61b2-4402-8db2-a1e874b74f0f",
-                            ConcurrencyStamp = "c0367be5-1239-4759-8883-797be0213251",
+                            Id = "236792e5-3975-4ead-a1a8-bec2119d4250",
+                            ConcurrencyStamp = "debdaa6b-db7e-44f2-a3e2-aa64a886e77e",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "f64641d0-1bd5-4d23-b6cc-4b88b420390a",
-                            ConcurrencyStamp = "013592da-9cd4-4117-8429-d538ea3020f3",
+                            Id = "caeaaa85-a2d9-4514-8d3e-b077afb76584",
+                            ConcurrencyStamp = "1f24c168-dec5-4c80-821a-5312dfe0f770",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -243,9 +245,6 @@ namespace MyTrashCollector.Migrations
 
                     b.Property<double>("Balance")
                         .HasColumnType("float");
-
-                    b.Property<bool>("CompletedPickup")
-                        .HasColumnType("bit");
 
                     b.Property<int?>("EndDay")
                         .HasColumnType("int");

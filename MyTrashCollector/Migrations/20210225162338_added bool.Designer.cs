@@ -10,8 +10,8 @@ using MyTrashCollector.Data;
 namespace MyTrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210224211153_dayofweek")]
-    partial class dayofweek
+    [Migration("20210225162338_added bool")]
+    partial class addedbool
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace MyTrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e76ac56e-e69c-4b06-9bfe-7b40909c64e3",
-                            ConcurrencyStamp = "e39eb3fd-8ae3-4895-8860-5eb911ce46b6",
+                            Id = "9d35b7b9-61b2-4402-8db2-a1e874b74f0f",
+                            ConcurrencyStamp = "c0367be5-1239-4759-8883-797be0213251",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "976c4ce3-c5ec-49a5-8de5-f8e7e64c6d8a",
-                            ConcurrencyStamp = "9a432192-65c0-45d7-bc92-bad6bd8cad93",
+                            Id = "f64641d0-1bd5-4d23-b6cc-4b88b420390a",
+                            ConcurrencyStamp = "013592da-9cd4-4117-8429-d538ea3020f3",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -245,6 +245,9 @@ namespace MyTrashCollector.Migrations
 
                     b.Property<double>("Balance")
                         .HasColumnType("float");
+
+                    b.Property<bool>("CompletedPickup")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("EndDay")
                         .HasColumnType("int");
