@@ -42,10 +42,28 @@
             @Html.DisplayFor(model => model.PickUpDay)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ExtraPickUp)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExtraPickUp)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Balance)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Balance)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDay)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDay)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDay)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndDay)
         </dd>
     </dl>
     <a asp-action="Edit" asp-route-id="model.Id">Change Pickup Day</a> | 
